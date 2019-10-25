@@ -82,6 +82,28 @@ function newCoffee() {
     location.reload();
 }
 
+function makeCoffee(){
+    var i = 0;
+    function move() {
+        if (i === 0) {
+            i = 1;
+            var elem = document.getElementById("myBar");
+            var width = 1;
+            var id = setInterval(frame, 30);
+            function frame() {
+                if (width >= 100) {
+                    clearInterval(id);
+                    i = 0;
+                } else {
+                    width++;
+                    elem.style.width = width + "%";
+                }
+            }
+        }
+    }
+    setTimeout(move, 500);
+}
+
 // from http://www.ncausa.org/About-Coffee/Coffee-Roasts-Guide
 if (localStorage.length === 2) {
     var coffees = [
@@ -105,15 +127,14 @@ if (localStorage.length === 2) {
 }
 
 
+
 var tbody = document.querySelector('#coffees');
-var submitButton = document.querySelector('#submit');
 var roastSelection = document.querySelector('#roast-selection');
 var coffeeSearch = document.querySelector('#coffee-search');
 var addCoffee = document.querySelector('#add-coffee');
 
 tbody.innerHTML = renderCoffees(coffees);
 
-submitButton.addEventListener('click', updateCoffees);
 roastSelection.addEventListener('change', updateCoffees);
 coffeeSearch.addEventListener('input', updateCoffees);
 addCoffee.addEventListener('click', newCoffee);
