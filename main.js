@@ -63,6 +63,10 @@ function updateCoffees(e) {
 function newCoffee() {
     var newRoast = document.getElementById('add-roast').value;
     var newName = document.getElementById('name-coffee').value;
+    if (newName === ""){
+        alert("Need to add a name.");
+        return;
+    }
     var newCoffee = {
         id: "",
         name: newName,
