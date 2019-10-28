@@ -63,7 +63,7 @@ function updateCoffees(e) {
 function newCoffee() {
     var newRoast = document.getElementById('add-roast').value;
     var newName = document.getElementById('name-coffee').value;
-    if (newName === ""){
+    if (newName === "") {
         alert("Need to add a name.");
         return;
     }
@@ -86,14 +86,16 @@ function newCoffee() {
     location.reload();
 }
 
-function makeCoffee(){
+function makeCoffee() {
     var i = 0;
+
     function move() {
         if (i === 0) {
             i = 1;
             var elem = document.getElementById("myBar");
             var width = 1;
             var id = setInterval(frame, 30);
+
             function frame() {
                 if (width >= 100) {
                     clearInterval(id);
@@ -105,6 +107,7 @@ function makeCoffee(){
             }
         }
     }
+
     setTimeout(move, 500);
 }
 
@@ -129,7 +132,6 @@ if (localStorage.length === 2) {
 } else {
     coffees = JSON.parse(window.localStorage.getItem("coffee"));
 }
-
 
 
 var tbody = document.querySelector('#coffees');
